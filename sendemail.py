@@ -103,5 +103,5 @@ if __name__ == '__main__':
                 title.append(task.get('task_name'))
 
         if cnt > 0:
-            receivers = ['904185259@qq.com', 'longzongxing@dingtalk.com']
+            receivers = ['123456789@qq.com']
             sendEmail(content, title, receivers)

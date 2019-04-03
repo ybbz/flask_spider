@@ -1,6 +1,7 @@
 import re
 import markdown
 import requests
+import time
 from datetime import datetime, timedelta
 from flask import (current_app, make_response, redirect, render_template,
                    request, url_for, flash)
@@ -140,7 +141,7 @@ def wrarticle():
         article_text = markdown.markdown(article_text, ['extra', 'codehilite'])
 
         article_id = generate_id('article')
-        article_date = strftime('%Y-%m-%d %H:%M:%S')
+        article_date = time.strftime('%Y-%m-%d %H:%M:%S')
         article_type = '技术杂谈' if artitle_type == '1' else '人生感悟'
         content = re.compile('.*?>(.*?)<').findall(article_text)
         article_summary = ''
@@ -182,7 +183,7 @@ def wrcomment(article_id):
     commentary = request.form.get("commentary")
     commentary = markdown.markdown(commentary, ['extra', 'codehilite'])
     comment_id = generate_id('comment')
-    comment_date = strftime('%Y-%m-%d %H:%M:%S')
+    comment_date = time.strftime('%Y-%m-%d %H:%M:%S')
     print('comment:', commentary)
     comment = Comment(
         comment_id=comment_id,

@@ -25,6 +25,10 @@ def search_fiction(name, flag=1):
     html = get_one_page(url, sflag=flag)
     soup = BeautifulSoup(html, 'html5lib')
     result_list = soup.find('div', 'result-list')
+    if result_list is None:
+        print('{} 抓取失败'.format(name))
+        raise Exception('{} 抓取失败'.format(name))
+
     fiction_lst = result_list.find_all('a', 'result-game-item-title-link')
     fiction_url = fiction_lst[0].get('href')
     fiction_name = fiction_lst[0].text.strip()
@@ -34,8 +38,8 @@ def search_fiction(name, flag=1):
         'div', 'result-game-item-info')[0].find_all('span')[1].text.strip()
 
     if fiction_name is None:
-        print('{} 小说不存在！！！'.format(name))
-        raise Exception('{} 小说不存在！！！'.format(name))
+        print('{} 小说不存在'.format(name))
+        raise Exception('{} 小说不存在'.format(name))
 
     fictions = (fiction_name, fiction_url, fiction_img, fiction_author,
                 fiction_comment)
