@@ -8,7 +8,7 @@ from flask import (current_app, make_response, redirect, render_template,
 from flask_login import login_required, current_user, login_user, logout_user
 
 from . import main
-from ..models import User, Article, Comment, Task, db
+from ..models import User, Article, Comment, Task, db, Movie, Movie_User
 from ..mylogger import logger
 from .forms import LoginForm, RegisterForm
 from ..tools import generate_id
@@ -244,3 +244,19 @@ def get_technology():
 def get_life():
     articles = Article().query.filter_by(article_type='人生感悟').all()
     return render_template('index.html', articles=articles, flag=3)
+
+
+@main.route('/movies/')
+def movies():
+    movies = Movie().query.all()
+    print(movies)
+    return render_template('movies.html', movies=movies, flag=6)
+
+
+@main.route('/movie/<movie_id>/')
+def movie(movie_id):
+    movie = Movie().query.filter_by(movie_id=movie_id).first()
+    movieUsers = Movie_User().query.filter_by(movie_id=movie_id).all()
+    return render_template(
+        'movie.html', movie=movie, movie_users=movieUsers)
+

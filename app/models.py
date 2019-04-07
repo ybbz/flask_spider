@@ -10,6 +10,32 @@ from flask import current_app
 from . import db, login_manager
 
 
+class Movie(db.Model):
+    __tablename__ = 'movie'
+    id = db.Column(db.Integer, primary_key=True)
+    movie_id = db.Column(db.String(32), unique=True)
+    movie_type = db.Column(db.String(32))
+    movie_role = db.Column(db.String(255))
+    movie_area = db.Column(db.String(32))
+    movie_director = db.Column(db.String(32))
+    movie_feature = db.Column(db.String(32))
+    movie_score = db.Column(db.String(32))
+    movie_name = db.Column(db.String(32))
+    movie_url = db.Column(db.String(255))
+
+
+class Movie_User(db.Model):
+    __tablename__ = 'movie_user'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.String(32), unique=True)
+    user_name = db.Column(db.String(32), unique=True)
+    user_score = db.Column(db.String(32))
+    movie_id = db.Column(db.String(32))
+    movie_name = db.Column(db.String(32))
+    movie_type = db.Column(db.String(32))
+    create_time = db.Column(db.DateTime)
+
+
 class Fiction(db.Model):
     __tablename__ = 'fiction'
     # __table_args__ = {"useexisting": True}

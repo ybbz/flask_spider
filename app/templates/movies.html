@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- movies start -->
+<div class="container-fluid">
+    <div class="row">
+        <!-- 推荐电影 -->
+        <div class="col-md-offset-2 col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3 class="panel-title">
+                        <p class="text-success">推荐电影</p>
+                    </h3>
+                    <hr>
+                    {% for movie in movies[:8] %}
+                    <div class="media">
+                        <div class="media-body">
+                            <span class="label label-primary">{{loop.index}}</span>
+                            <a href="/movie/{{movie.movie_id}}">{{movie.movie_name}}</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <ul class="pagination">
+                <li><a href="#">&laquo;</a></li>
+                {% for movie in movies[:5] %}
+                <li><a href="/movie/{{movie.movie_id}}">{{loop.index}}</a></li>
+                {% endfor %}
+                <li><a href="#">&raquo;</a></li>
+            </ul><br>
+        </div>
+    </div>
+</div>
+<!-- movies end -->
+{{super()}}
+{% endblock %}

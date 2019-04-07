@@ -19,7 +19,7 @@
     2.cd flask_spider
     3.pyvenv myvenv #虚拟环境
     4.source myvenv/bin/activate #激活虚拟环境
-    5.pip install -r  requirement.txt # 安装依赖
+    5.pip install -r requirement.txt # 安装依赖
 
 以上，应该安装好了python依赖包。
 接下来是初始化数据：

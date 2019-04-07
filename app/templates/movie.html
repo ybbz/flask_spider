@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content%}
+<div class="container-fluid">
+    <div class="row">
+        <!--左边栏  -->
+        <div class="col-md-8">
+            <ol class="breadcrumb">
+                <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+                <li><a href="#"></a>{{movie.movie_type}}</li>
+                <li class="active">{{movie.movie_name}}</li>
+            </ol>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>{{movie.movie_name}}</h3>
+                    <p>
+                        <span>{{movie.movie_role}}&nbsp;&nbsp;</span>
+                        <span>{{movie.movie_director}}&nbsp;&nbsp;</span>
+                        <span>{{movie.movie_feature}}&nbsp;&nbsp;</span>
+                        <span>{{movie.movie_type}}&nbsp;&nbsp;</span>
+                        <span>{{movie.movie_area}}&nbsp;&nbsp;</span>
+                        <span>{{movie.movie_score}}&nbsp;&nbsp;</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{super()}}
+{% endblock %}
